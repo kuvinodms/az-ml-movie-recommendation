@@ -164,10 +164,14 @@ sim_options = {
     'name': 'cosine',
     'user_based': False # Change it to True
 }
+sim_options = {
+    'name': 'pearson_baseline',
+    'shrinkage': 0 # no shrinkage
+}
  
 # option 3: use different model (like KNNWithMeans or something like that)
 # TODO: ankhokha: add other model URLs
-knn = KNNWithMeans(sim_options=sim_options)
+knn = KNNBasic(sim_options=sim_options)
 
 knn.train(trainingSet)
 
