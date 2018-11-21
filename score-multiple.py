@@ -70,7 +70,7 @@ def init():
     global model
     global top3_recommendations
     global rid_to_name
-    model_path = os.path.join(Model.get_model_path('outputs'), 'model.pkl')    
+    model_path = os.path.join(Model.get_model_path('outputs'), 'model1.pkl')    
     # model_path = Model.get_model_path("model.pkl")
     model = joblib.load(model_path)
     predictions = get_data()
