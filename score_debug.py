@@ -8,7 +8,7 @@ from surprise import Dataset, evaluate
 from surprise import KNNBasic
 import os
 import urllib.request
-# import azurepipelines_optimizely_sdk as aps
+import azurepipelines_optimizely_sdk as aps
 
 def get_data(model):
     # manually downloading the file, as it requires a prompt otherwise
@@ -72,11 +72,9 @@ def init():
     global rid_to_name
     global azurePipelineOptimizelySdk
 
-    """
-        PROJECT_ID = "12098094739"
-        EXPERIMENT_KEY = "Model_Experiment"
-        azurePipelineOptimizelySdk = aps.AzurePipelinesOptimizelySdk(PROJECT_ID, EXPERIMENT_KEY)
-    """
+    PROJECT_ID = "12098094739"
+    EXPERIMENT_KEY = "Model_Experiment"
+    azurePipelineOptimizelySdk = aps.AzurePipelinesOptimizelySdk(PROJECT_ID, EXPERIMENT_KEY)
 
     modelFileByName = {
         "modelA" : "model1.pkl",
@@ -103,8 +101,7 @@ def run(raw_data):
     userUid = jsonData['uid']
 
     # Integegration with optimizely
-    # variationKey = azurePipelineOptimizelySdk.getVariationKey(userUid)
-    variationKey = 'modelA'
+    variationKey = azurePipelineOptimizelySdk.getVariationKey(userUid)
     if variationKey is None:
         print("Setting default model for user: " + userUid)
         variationKey = list(modelRecommendationByName.keys())[0]
