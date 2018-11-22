@@ -77,7 +77,9 @@ def init():
     azurePipelineOptimizelySdk = aps.AzurePipelinesOptimizelySdk(PROJECT_ID, EXPERIMENT_KEY)
 
     modelFileByName = {
-        "modelA" : "model1.pkl"
+        "modelA" : "model1.pkl",
+        "modelB" : "model2.pkl",
+        "modelC" : "model3.pkl"
     }
 
     modelRecommendationByName = {}
@@ -101,15 +103,18 @@ def run(raw_data):
     # Integegration with optimizely
     variationKey = azurePipelineOptimizelySdk.getVariationKey(userUid)
     if variationKey is None:
+        print("Setting default model for user: " + userUid)
         variationKey = list(modelRecommendationByName.keys())[0]
     print("Predicting for user '" + userUid + "' using model : " + variationKey)
     top3_recommendations = modelRecommendationByName[variationKey]
 
     #data = numpy.array(data)
+    result = None
     for uid, user_ratings in top3_recommendations.items():
         try:
             if str(uid) == str(userUid):
                 result = str((uid, [rid_to_name[iid] for (iid, _) in user_ratings]))
+                break
         except Exception as e:
             result = str(e)
     return json.dumps({"result": result})
