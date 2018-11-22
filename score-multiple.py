@@ -77,8 +77,8 @@ def init():
     azurePipelineOptimizelySdk = aps.AzurePipelinesOptimizelySdk(PROJECT_ID, EXPERIMENT_KEY)
 
     modelFileByName = {
-        "modelA" : "model1.pkl"
-        "modelB" : "model2.pkl"
+        "modelA" : "model1.pkl",
+        "modelB" : "model2.pkl",
         "modelC" : "model3.pkl"
     }
 
