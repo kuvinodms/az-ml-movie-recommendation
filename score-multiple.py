@@ -78,6 +78,8 @@ def init():
 
     modelFileByName = {
         "modelA" : "model1.pkl"
+        "modelB" : "model2.pkl"
+        "modelC" : "model3.pkl"
     }
 
     modelRecommendationByName = {}
