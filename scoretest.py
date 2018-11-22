@@ -1,11 +1,11 @@
-scopeMulti = __import__('score-multiple')
+import score 
 
-scopeMulti.init()
+score.init()
 
 
 for x in range(50):
     data = "{\"uid\": \"" + str(x) + "\"}"
-    print(scopeMulti.run(data))
+    print(score.run(data))
 
 
 
