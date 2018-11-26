@@ -145,7 +145,11 @@ def run(raw_data):
     for uid, user_ratings in top3_recommendations.items():
         try:
             if str(uid) == str(userUid):
-                result = str((uid, variationKey, [rid_to_name[iid] for (iid, _) in user_ratings]))
+                suggestions = []
+                for (iid, _) in user_ratings:
+                    suggestions.append(rid_to_name[iid])
+                
+                result = {'uid': uid, 'variationKey': variationKey, 'suggestions': suggestions}
                 break
         except Exception as e:
             result = str(e)
