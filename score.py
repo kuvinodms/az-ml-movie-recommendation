@@ -67,7 +67,7 @@ def read_item_names():
     with io.open(file_name, 'r', encoding='ISO-8859-1') as f:
         for line in f:
             line = line.split('|')
-            rid_to_name[line[0]] = line[1]
+            rid_to_name[line[0]] = {'name': line[1],'image_url':  line[4]}
  
     return rid_to_name
 
