@@ -136,7 +136,7 @@ def run(raw_data):
     # Integegration with optimizely
     # variationKey = azurePipelineOptimizelySdk.getVariationKey(userUid)
     variationKey = fetchVariationKey(userUid)
-    if variationKey is None:
+    if not variationKey:
         variationKey = "modelA"
     top3_recommendations = modelRecommendationByName[variationKey]
 
