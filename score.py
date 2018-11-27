@@ -137,7 +137,7 @@ def run(raw_data):
     # variationKey = azurePipelineOptimizelySdk.getVariationKey(userUid)
     variationKey = fetchVariationKey(userUid)
     if variationKey is None:
-        variationKey = list(modelRecommendationByName.keys())[0]
+        variationKey = "modelA"
     top3_recommendations = modelRecommendationByName[variationKey]
 
     #data = numpy.array(data)
